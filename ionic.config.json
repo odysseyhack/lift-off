@@ -1,0 +1,7 @@
+{
+  "name": "liftoff",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

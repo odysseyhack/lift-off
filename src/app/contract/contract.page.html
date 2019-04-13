@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contract</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item >
+      <div class="item-note" slot="end">
+        {{contract?.name}}
+      </div>
+    </ion-item>
+    <ion-item >
+      <div class="item-note" slot="end">
+        {{contract?.to}}
+      </div>
+    </ion-item>
+  </ion-list>
+  <div>
+    <ion-button routerLink="/addtransaction">+ Tx</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Contract</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="contractForm" (ngSubmit)="onFormSubmit(contractForm.value)">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Stove</ion-label>
+      <ion-input type="text" formControlName="to"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="text" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-button type="submit" shape="round" color="primary" expand="block">Save</ion-button>
+  </form>
+</ion-content>
