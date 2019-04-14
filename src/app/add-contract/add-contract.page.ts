@@ -20,10 +20,9 @@ export class AddContractPage implements OnInit {
 
   constructor(private contractsService: ContractsService,
               private formBuilder: FormBuilder,
-              public route: ActivatedRoute,
+              private appTruffleService: AppTruffleService,
               public router: Router,
-              private accountService: AccountService,
-              private appTruffleService: AppTruffleService) { }
+              private accountService: AccountService) { }
 
   ngOnInit() {
 
