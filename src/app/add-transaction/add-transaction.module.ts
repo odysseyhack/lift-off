@@ -16,11 +16,11 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CommonModule
   ],
   declarations: [AddTransactionPage]
 })

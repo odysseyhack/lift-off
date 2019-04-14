@@ -10,9 +10,9 @@ import { ContractsPage } from './contracts.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
+    IonicModule,
     RouterModule.forChild([
       {
         path: '',

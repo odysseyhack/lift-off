@@ -17,9 +17,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AddContractPage]
