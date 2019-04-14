@@ -30,5 +30,8 @@ export class ContractPage implements OnInit {
         });
   }
 
+  public navigateTransaction() {
+      this.router.navigate( [ '/addtransaction/' + this.contract.id]);
+  }
 
 }

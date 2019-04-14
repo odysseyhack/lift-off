@@ -4,8 +4,6 @@ import { Transaction } from '../model/transaction';
 
 const STORAGE_KEY = 'transactionsKey';
 
-// TODO: fix proper indexing
-
 @Injectable()
 export class TransactionsService {
 

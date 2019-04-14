@@ -6,15 +6,17 @@ var contract = require("truffle-contract");
 import * as secureSilviCulture   from '../../../build/contracts/SecureSilviCulture.json';
 import {Contract} from "../model/contract";
 import {AccountService} from "./account-service";
+import {ContractsService} from "./contracts-service";
 
 @Injectable()
 export class AppTruffleService {
 
-    private web_3: any;
+    public web_3: any;
     private web3Provider: any;
     private contracts: any;
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService,
+                private contractsService: ContractsService) {
         //this.initWeb3();
     }
 
@@ -130,15 +132,21 @@ export class AppTruffleService {
             beneficiary: account.address,
             key: contract.password
         };
-        this.contracts.SecureSilviCulture.new([contractParams.carrier,
-            contractParams.carrier, contractParams.key]).then(rs => {
-            this.contracts.contracts[contract.id] = rs.address;
+        this.contracts.SecureSilviCulture.new(contractParams.carrier,
+            contractParams.carrier, contractParams.key, { from: account.address }).then(rs => {
+            this.contracts.contracts[contract.id] = rs;
+            contract.address = rs.address;
+            this.contractsService.addContract(contract);
         });
     }
 
     public fetchContract(contract: Contract) {
-        this.contracts.SecureSilviCulture.at({address: contract.address}).then(rs => {
+        this.contracts.SecureSilviCulture.at(contract.address).then(rs => {
             this.contracts.contracts[contract.id] = rs;
         });
+    }
+
+    public getContract(id): any {
+        return this.contracts.contracts[id];
     }
 }

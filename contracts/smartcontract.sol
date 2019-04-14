@@ -126,11 +126,15 @@ contract SecureSilviCulture {
         return true;
     }
     
-    function getKeyhash(uint _amount) public returns(uint256 _keyhash){
+    function createKeyhash(uint _amount) public returns(bool){
         require(bytes32(_amount).length > 0, "Invalid amount");
         keyhash = uint256(keccak256(_amount, key));
         amount = _amount;
-        return (keyhash);
+        return true;
+    }
+
+    function getKeyhash() view public returns(uint) {
+        return keyhash;
     }
 
     function getReturnKeyhash(uint _amount) public returns (uint256 _return_keyhash){

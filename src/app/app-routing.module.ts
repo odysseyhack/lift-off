@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'transactions',
     loadChildren: './transactions/transactions.module#TransactionsPageModule'
   },
-  { path: 'addtransaction', loadChildren: './add-transaction/add-transaction.module#AddTransactionPageModule' }
+  { path: 'addtransaction/:id', loadChildren: './add-transaction/add-transaction.module#AddTransactionPageModule' }
 
 ];
 

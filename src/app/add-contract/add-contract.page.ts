@@ -4,6 +4,7 @@ import {Contract} from '../model/contract';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../services/account-service';
+import {AppTruffleService} from "../services/app-truffle-service";
 
 @Component({
   selector: 'app-contract',
@@ -21,7 +22,8 @@ export class AddContractPage implements OnInit {
               private formBuilder: FormBuilder,
               public route: ActivatedRoute,
               public router: Router,
-              private accountService: AccountService) { }
+              private accountService: AccountService,
+              private appTruffleService: AppTruffleService) { }
 
   ngOnInit() {
 
@@ -36,7 +38,8 @@ export class AddContractPage implements OnInit {
       from: this.accountService.getAccount().address,
       to: form['to'],
       password: form['password']};
-    this.contractsService.addContract(contract);
+
+    this.appTruffleService.createNewContract(contract);
     this.router.navigate([ 'contracts' ]);
   }
 
