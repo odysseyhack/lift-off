@@ -14,9 +14,9 @@
     <ion-button routerLink="/addcontract">+</ion-button>
   </div>
   <ion-list>
-    <ion-item *ngFor="let contract of contracts; let i = index">
-      <div (click)="delete(i)">-</div>
-      <div class="item-note" slot="end" (click)="navigateTo(i)">
+    <ion-item *ngFor="let contract of contracts">
+      <div (click)="delete(contract.id)">-</div>
+      <div class="item-note" (click)="navigateTo(contract.id)">
         {{contract.name}}  {{contract.to}}
       </div>
     </ion-item>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import {Contract} from '../model/contract';
 
-const STORAGE_KEY = 'contractsKey';
+const STORAGE_KEY = 'contractsKey2';
 
 @Injectable()
 export class ContractsService {
@@ -11,22 +11,22 @@ export class ContractsService {
 
 
     addContract(contract: Contract) {
-        return this.getAllContracts().then(result => {
+        this.storage.get(STORAGE_KEY).then(result => {
             if (result) {
-                result.push(contract);
+                result[contract.id] = contract;
                 return this.storage.set(STORAGE_KEY, result);
             } else {
-                return this.storage.set(STORAGE_KEY, [contract]);
+                const container = {};
+                container[contract.id] = contract;
+                return this.storage.set(STORAGE_KEY, container);
             }
         });
     }
 
     deleteContract(id) {
-        return this.getAllContracts().then(result => {
-            if (result) {
-                result.splice(id, 1);
-                return this.storage.set(STORAGE_KEY, result);
-            }
+        this.storage.get(STORAGE_KEY).then(result => {
+            delete result[id];
+            return this.storage.set(STORAGE_KEY, result);
         });
     }
 

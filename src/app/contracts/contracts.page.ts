@@ -17,7 +17,7 @@ export class ContractsPage implements OnInit {
               ) {}
 
   ngOnInit() {
-    this.contractsService.getAllContracts().then(rs => this.contracts = rs );
+    this.contractsService.getAllContracts().then(rs => this.contracts = Object.values(rs) );
   }
 
 

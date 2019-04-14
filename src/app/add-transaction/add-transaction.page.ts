@@ -36,7 +36,7 @@ export class AddTransactionPage implements OnInit {
         });
 
     this.contractForm = this.formBuilder.group({
-      name : [null], amount: [null], asset: [null], hash: [null]
+      name : [null], amount: [null], asset: [null], quality: [null]
     });
   }
 
@@ -45,7 +45,8 @@ export class AddTransactionPage implements OnInit {
     const smartContract = this.appTruffleService.getContract(this.contract.id);
 
     const amount = this.appTruffleService.web_3.utils.toBN(form['amount']);
-    smartContract.createKeyhash(amount, { from: this.contract.from }).then( _ => {
+    smartContract.createKeyhash(amount, { from: this.contract.from }).then( rs => {
+      console.log(rs);
       smartContract.getKeyhash().then(rs => {
         const keyhash = rs;
         const value = this.appTruffleService.web_3.utils.toBN(1000000000000000000);

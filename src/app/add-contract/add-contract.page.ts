@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ContractsService} from '../services/contracts-service';
 import {Contract} from '../model/contract';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Router} from '@angular/router';
 import {AccountService} from '../services/account-service';
 import {AppTruffleService} from "../services/app-truffle-service";
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-contract',
@@ -27,13 +28,13 @@ export class AddContractPage implements OnInit {
   ngOnInit() {
 
     this.contractForm = this.formBuilder.group({
-      'name' : [null], 'to': [null], 'password': [null]
+      name : [null], to: [null], password: [null]
     });
   }
 
   onFormSubmit(form: NgForm) {
 
-    const contract: Contract = { id: '1', name: form[name],
+    const contract: Contract = { id: UUID.UUID(), name: form['name'],
       from: this.accountService.getAccount().address,
       to: form['to'],
       password: form['password']};
